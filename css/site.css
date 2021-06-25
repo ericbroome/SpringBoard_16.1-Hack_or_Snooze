@@ -102,10 +102,24 @@ form > hr {
   border: 1px solid lightgray;
 }
 
+.login-input {
+  margin: inherit;
+}
+
 .login-input label {
   width: 70px;
 }
 
+.spinner {
+  border: 1.6rem solid #ff6600;
+  border-top: 1.6rem solid lightgray;
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+  justify-self: center;
+  align-self: center;
+}
 
 /* responsive queries for tightening things up for mobile. */
 

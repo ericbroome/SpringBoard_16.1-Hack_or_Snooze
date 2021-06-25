@@ -12,6 +12,11 @@ nav {
   font-weight: bold;
 }
 
+.navbar-control {
+  font-weight: bold;
+  color: black;
+}
+
 .nav-link {
   font-size: 0.85rem;
   margin: 0 3px;

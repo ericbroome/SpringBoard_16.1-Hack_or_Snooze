@@ -35,26 +35,55 @@
 <!-- top navigation bar -->
 <nav>
   <div class="navbar-brand">
-    <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+    <a class="nav-link" href="#" id="nav-all" title="Show all but hidden">Hack or Snooze </a>
+  </div>
+  <div class="navbar-control">
+    <a class="nav-link hidden" href="#" id="nav-add-story" title="Add your story"> | submit</a>
+    <a class="nav-link hidden" href="#" id="nav-show-hidden" title="Hidden Stories">|&nbsp; &cross;</a>
+    <a class="nav-link hidden" href="#" id="nav-show-favorites" title="Favorite Stories">|&nbsp; &#9733;</a>
+    <a class="nav-link hidden" href="#" id="nav-show-mine" title="Show your stories">|&nbsp; mine</a>
   </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
-    <a class="nav-link" href="#" id="nav-user-profile"></a>
-    <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
+    <a class="nav-link hidden" href="#" id="nav-user-profile"></a>
+    <a class="nav-link hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
-
+<!-- Add Story Form -->
+  <div id="add-story-form-container">
+    <form
+        action="#"
+        id="add-story-form"
+        class="account-form hidden"
+        method="post">
+      <h4>Add Story</h4>
+      <div class="login-input">
+        <label for="add-story-title">Title</label>
+        <input id="add-story-title" autocapitalize="words">
+      </div>
+      <div class="login-input">
+        <label for="add-story-url">URL</label>
+        <input id="add-story-url" placeholder="Enter the URL">
+      </div>
+      <button id="add-story-submit" type="submit" form="add-story-form">Submit</button>
+    </form>
+  </div>
   <!-- loading message (removed by JS after stories loaded) -->
-  <div id="stories-loading-msg">Loading&hellip;</div>
-
+  <div id="stories-loading-msg" class="spinner"><span>Loading&hellip;</span></div>
   <!-- List of all stories -->
-  <ol id="all-stories-list" class="stories-list"></ol>
-
+  <ol id="all-stories-list" class="stories-list hidden"></ol>
+  <ol id="hidden-stories-list" class="stories-list hidden"></ol>
+  <ol id="favorite-stories-list" class="stories-list hidden"></ol>
+  <ol id="my-stories-list" class="stories-list hidden"></ol>
 </section>
 
+
+<section class="account-forms-container container">
+
+</section>
 <!-- Login and signup forms -->
 <section class="account-forms-container container">
 
@@ -70,6 +99,21 @@
       <input id="login-password" type="password" autocomplete="current-password">
     </div>
     <button type="submit">login</button>
+    <hr>
+  </form>
+
+  <!-- Change user info form -->
+  <form action="#" id="change-form" class="account-form hidden" method="post">
+    <h4>Change User Name and/or Password</h4>
+    <div class="login-input">
+      <label for="change-name">name</label>
+      <input id="change-name" autocapitalize="words">
+    </div>
+    <div class="login-input">
+      <label for="change-password">password</label>
+      <input id="change-password" type="password" autocomplete="current-password">
+    </div>
+    <button type="submit">submit</button>
     <hr>
   </form>
 
@@ -94,16 +138,20 @@
     </div>
     <button type="submit">create account</button>
   </form>
+
+
 </section>
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>
 <script src="https://unpkg.com/axios/dist/axios.js"></script>
-
-<script src="js/models.js"></script>
-<script src="js/main.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/context.js"></script>
+<script src="js/story.js"></script>
+<script src="js/storylist.js"></script>
 <script src="js/user.js"></script>
+<script src="js/main.js"></script>
+<script src="js/user-util.js"></script>
+<script src="js/nav.js"></script>
 <script src="js/stories.js"></script>
 
 </body>

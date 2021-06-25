@@ -11,14 +11,20 @@
 }
 
 #stories-loading-msg {
+  display: flex;
   font-weight: bold;
   font-size: 150%;
   margin: 20px 30px;
+  justify-items: center;
+  align-items: center;
 }
 
+#stories-loading-msg span {
+  flex: 1;
+  text-align: center;
+}
 
 /* Individual stories */
-
 .story-link {
   color: black;
   font-size: 0.85rem;
@@ -36,4 +42,28 @@
 
 .story-user {
   display: block;
+}
+
+.favorite{
+  color:red;
+}
+
+.delete {
+  color: red;
+}
+
+.hide {
+  color: black;
+}
+
+.restore{
+  color: green;
+}
+
+.not {
+  color: #cccccc;
+}
+
+.favorite .not {
+  color: #cccccc;
 }
