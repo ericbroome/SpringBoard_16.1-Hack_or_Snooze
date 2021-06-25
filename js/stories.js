@@ -76,7 +76,6 @@ function putStoriesOnPage() {
   }
   $allStoriesList.show();
   updateFavorites();
-//  Context.storyList.resolve();
 }
 
 /**

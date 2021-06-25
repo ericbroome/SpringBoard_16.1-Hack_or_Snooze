@@ -29,12 +29,15 @@
             return null;
         }
         // turn plain old story objects from API into instances of Story class
-        const stories = response.data.stories.map(story => {
+        let stories = response.data.stories.map(story => {
             let result = new Story(story);
             return result;
         });
         //Now, if a user is logged in , we will look up favorites, own, and hidden
         // build an instance of our own class using the new array of stories
+        if(Context.user) {
+          
+        }
         const storyList = new StoryList(stories);
         return Context.storyList = storyList;
     }
@@ -73,6 +76,7 @@
    * @param {Object} newStory {title, author, url}
    * @returns 
    */
+
     static async addStory(newStory) {
       let response = null;
       try {
@@ -88,9 +92,10 @@
       let story = new Story(response.data.story);
       story.isMine = true;
       Context.user.ownStories.push({title: story.title, author: story.author, url: story.url, username: story.username, storyId: story.storyId, createdAt: story.createdAt});
-      Context.storyList.stories.push(story);
+      Context.storyList.stories.unshift(story);
       return story;
     }
+
   }
   
   

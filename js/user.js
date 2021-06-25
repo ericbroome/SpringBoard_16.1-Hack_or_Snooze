@@ -151,7 +151,7 @@ class User extends Context {
 
   writeLocalStorage() {
     let hs = this.hiddenStories.map(s => { return {isHidden: true, storyId: s.storyId, title: s.title, username: s.username, url: s.url, createdAt: s.createdAt, author: s.author}});
-   let ls = {hiddenStories: hs};
+    let ls = {hiddenStories: hs};
     Context.writeLocalStorage(this.username, ls);
   }
 
@@ -241,7 +241,7 @@ class User extends Context {
       Context.storyList.stories.splice(Context.storyList.stories.findIndex(item => item.storyId == story.storyId), 1);
       Context.user.hiddenStories.splice(Context.user.hiddenStories.findIndex(item => item.storyId == story.storyId), 1);
       Context.user.ownStories.splice(Context.user.ownStories.findIndex(item => item.storyId == story.storyId), 1);
-      story.element.remove();
+      $hiddenStoriesList.append(story.element);
       Context.user.writeLocalStorage();
       return;
     }

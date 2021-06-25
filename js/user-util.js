@@ -86,20 +86,24 @@ $changeForm.on("submit", changeUserData);
  */
 
  async function onSubmitStory(evt) {
-//  evt.preventDefault();
+  evt.preventDefault();
   if(Context.user == null)return;
   const $formStoryTitle = $("#add-story-title");
   const $formStoryURL = $("#add-story-url");
+  const $formStoryAuthor = $("#add-story-author");
   const title = $formStoryTitle.val();
   const url = $formStoryURL.val();
+  let author = $formStoryAuthor.val();
+  author = author ? author : Context.user.name;
   $formStoryTitle.empty();
   $formStoryURL.empty();
   console.debug(`Submitted the story ${title} @ ${url}`);
-  let story = await StoryList.addStory({title: title, author:Context.user.name, url: url});
+  let story = await StoryList.addStory({title: title, author:author, url: url});
   $addStoryForm.trigger("reset");
   $addStoryForm.hide();
   if(story) {
     story.element = generateStoryMarkup(story);
+    Context.user.ownStories.filter(item => item.storyId == story.storyId)[0].element = story.element;
     $allStoriesList.append(story.element);
   }
 }
